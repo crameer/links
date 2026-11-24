@@ -18,14 +18,14 @@ export const ProfileCard = ({ config }: { config: ResolvedConfig }) => {
   return (
     <motion.div
       className={cn(
-        'relative z-10 w-full max-w-md mx-auto px-4 py-8',
-        'flex flex-col items-center gap-6',
+        'relative z-10 w-full max-w-md mx-auto px-4 py-5 sm:py-8',
+        'flex flex-col items-center gap-4 sm:gap-6',
       )}
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
-      <div className="flex flex-col items-center gap-3 text-center">
+      <div className="flex flex-col items-center gap-2 sm:gap-3 text-center">
         <Avatar
           {...(profile.avatar !== undefined ? { src: profile.avatar } : {})}
           name={profile.name}
@@ -68,7 +68,7 @@ export const ProfileCard = ({ config }: { config: ResolvedConfig }) => {
           )}
           {profile.bio && (
             <p
-              className="text-sm mt-2 max-w-xs leading-relaxed font-black tracking-wide"
+              className="text-sm mt-1.5 sm:mt-2 max-w-xs leading-relaxed font-black tracking-wide"
               style={{
                 color: '#080d08',
                 WebkitTextStroke: '0.85px #9cff45',
@@ -83,7 +83,7 @@ export const ProfileCard = ({ config }: { config: ResolvedConfig }) => {
         {socials.length > 0 && <SocialIcons socials={socials} />}
       </div>
 
-      <div className="flex flex-col gap-3 w-full">
+      <div className="flex flex-col gap-2.5 sm:gap-3 w-full">
         {links.map((link, index) => (
           <motion.div
             key={link.url}
