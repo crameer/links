@@ -8,7 +8,7 @@ const config: LinksConfig = {
     name: 'Craameer',
     username: 'craameer',
     bio: 'Gaming • Coches • JDM • Racing',
-    avatar: '/fantasmita.png',
+    avatar: 'https://raw.githubusercontent.com/crameer/links/dev/public/fantasmita.png',
   },
 
   socials: [
