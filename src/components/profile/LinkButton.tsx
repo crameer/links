@@ -97,8 +97,12 @@ export const LinkButton = ({ link, variant }: LinkButtonProps) => {
       <span className="relative min-w-0 flex-1">
         <span className="mb-0.5 block text-[10px] font-bold tracking-[0.2em]" style={{ color: platform.color, textShadow: `0 0 6px ${platform.glow}` }}>{platform.label}</span>
         <span className="block truncate text-base font-bold tracking-wide text-white">{link.title}</span>
-        {link.description && (
-          <span className="mt-0.5 block truncate text-xs font-medium text-white/75">{link.description}</span>
+        {(platformKey === 'tiktok' || link.description) && (
+          <span className="mt-0.5 block truncate text-xs font-medium text-white/75">
+            {platformKey === 'tiktok'
+              ? 'Clips, coches y momentos destacados · También hacemos directos aquí'
+              : link.description}
+          </span>
         )}
       </span>
       <span
