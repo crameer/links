@@ -35,7 +35,7 @@ export const Avatar = ({ src, name, glow = true, size = 96 }: AvatarProps) => {
           priority
           fetchPriority="high"
           loading="eager"
-          className="object-cover"
+          className="object-cover scale-[1.22]"
         />
       ) : (
         <div
