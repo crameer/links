@@ -34,7 +34,16 @@ export const ProfileCard = ({ config }: { config: ResolvedConfig }) => {
         />
         <div>
           <div className="flex items-center justify-center gap-1.5">
-            <h1 className="text-2xl font-bold text-white">{profile.name}</h1>
+            <h1
+              className="text-2xl font-bold"
+              style={{
+                color: '#080d08',
+                WebkitTextStroke: '0.7px #9cff45',
+                textShadow: '0 1px 0 #c7ff91, 0 0 5px rgba(126,255,45,.9), 0 0 12px rgba(126,255,45,.72), 0 0 22px rgba(126,255,45,.42)',
+              }}
+            >
+              {profile.name}
+            </h1>
             {profile.verified && (
               <BadgeCheck
                 size={20}
@@ -43,9 +52,28 @@ export const ProfileCard = ({ config }: { config: ResolvedConfig }) => {
               />
             )}
           </div>
-          {profile.username && <p className="text-sm text-white/50 mt-0.5">@{profile.username}</p>}
+          {profile.username && (
+            <p
+              className="text-sm mt-0.5 font-semibold"
+              style={{
+                color: '#e8eee8',
+                textShadow: '0 0 3px rgba(170,255,130,.5), 0 0 8px rgba(126,255,45,.28)',
+              }}
+            >
+              @{profile.username}
+            </p>
+          )}
           {profile.bio && (
-            <p className="text-sm text-white/70 mt-2 max-w-xs leading-relaxed">{profile.bio}</p>
+            <p
+              className="text-sm mt-2 max-w-xs leading-relaxed font-bold"
+              style={{
+                color: '#080d08',
+                WebkitTextStroke: '0.35px #9cff45',
+                textShadow: '0 0 4px rgba(126,255,45,.82), 0 0 10px rgba(126,255,45,.55)',
+              }}
+            >
+              {profile.bio}
+            </p>
           )}
         </div>
         {socials.length > 0 && <SocialIcons socials={socials} />}
