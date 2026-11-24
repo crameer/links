@@ -111,11 +111,11 @@ const LABELS: Record<SocialPlatform, string> = {
 }
 
 const BRAND_ICONS: Partial<Record<SocialPlatform, { slug: string; color: string; glow: string }>> = {
-  youtube: { slug: 'YouTube', color: 'FF0033', glow: 'drop-shadow(0 0 4px rgba(255,0,51,.8)) drop-shadow(0 0 8px rgba(255,0,51,.45))' },
-  twitch: { slug: 'Twitch', color: '9146FF', glow: 'drop-shadow(0 0 4px rgba(145,70,255,.85)) drop-shadow(0 0 8px rgba(145,70,255,.45))' },
-  tiktok: { slug: 'TikTok', color: 'FFFFFF', glow: 'drop-shadow(-2px 0 3px rgba(37,244,238,.95)) drop-shadow(2px 0 3px rgba(254,44,85,.95)) drop-shadow(0 0 7px rgba(255,255,255,.45))' },
-  instagram: { slug: 'Instagram', color: 'FF4FA3', glow: 'drop-shadow(0 0 4px rgba(255,79,163,.85)) drop-shadow(0 0 8px rgba(255,138,0,.45))' },
-  twitter: { slug: 'X', color: 'FFFFFF', glow: 'drop-shadow(0 0 4px rgba(255,255,255,.85)) drop-shadow(0 0 8px rgba(255,255,255,.4))' },
+  youtube: { slug: 'YouTube', color: 'FF0033', glow: 'drop-shadow(0 0 5px rgba(255,0,51,1)) drop-shadow(0 0 11px rgba(255,0,51,.85)) drop-shadow(0 0 18px rgba(255,0,51,.5))' },
+  twitch: { slug: 'Twitch', color: '9146FF', glow: 'drop-shadow(0 0 5px rgba(145,70,255,1)) drop-shadow(0 0 11px rgba(145,70,255,.85)) drop-shadow(0 0 18px rgba(145,70,255,.5))' },
+  tiktok: { slug: 'TikTok', color: 'FFFFFF', glow: 'drop-shadow(-2px 0 5px rgba(37,244,238,1)) drop-shadow(2px 0 5px rgba(254,44,85,1)) drop-shadow(0 0 12px rgba(255,255,255,.75))' },
+  instagram: { slug: 'Instagram', color: 'FF4FA3', glow: 'drop-shadow(0 0 5px rgba(255,79,163,1)) drop-shadow(0 0 11px rgba(255,79,163,.85)) drop-shadow(0 0 18px rgba(255,138,0,.55))' },
+  twitter: { slug: 'X', color: 'FFFFFF', glow: 'drop-shadow(0 0 5px rgba(255,255,255,1)) drop-shadow(0 0 12px rgba(255,255,255,.8)) drop-shadow(0 0 18px rgba(120,190,255,.5))' },
 }
 
 const SocialIcon = ({ platform }: { platform: SocialPlatform }) => {
@@ -126,11 +126,11 @@ const SocialIcon = ({ platform }: { platform: SocialPlatform }) => {
       <img
         src={`https://cdn.simpleicons.org/${brand.slug}/${brand.color}`}
         alt=""
-        width={18}
-        height={18}
+        width={22}
+        height={22}
         loading="lazy"
         aria-hidden="true"
-        className="size-[18px] object-contain transition-transform duration-200 group-hover:scale-110"
+        className="size-[22px] object-contain transition-transform duration-200 group-hover:scale-110"
         style={{ filter: brand.glow }}
       />
     )
@@ -152,8 +152,7 @@ export const SocialIcons = ({ socials }: { socials: SocialLink[] }) => {
                 target={platform === 'email' ? undefined : '_blank'}
                 rel="noopener noreferrer"
                 className={cn(
-                  'group opacity-80 hover:opacity-100 transition-all duration-200',
-                  'hover:scale-110',
+                  'group grid size-8 place-items-center rounded-full border border-white/20 bg-slate-950/35 opacity-100 shadow-[0_0_10px_rgba(130,80,255,0.18)] backdrop-blur-sm transition-all duration-200 hover:scale-110 hover:border-white/50 hover:bg-slate-950/55',
                 )}
                 aria-label={LABELS[platform]}
               >
