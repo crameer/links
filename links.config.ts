@@ -58,7 +58,7 @@ const config: LinksConfig = {
     {
       title: 'X (Twitter)',
       url: 'https://x.com/Cr4meer',
-      icon: '𝕏',
+      icon: 'icon:x:mono:fff',
       description: 'Novedades y avisos',
       style: 'neon',
     },
