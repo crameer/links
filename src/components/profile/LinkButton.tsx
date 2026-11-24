@@ -84,10 +84,23 @@ export const LinkButton = ({ link, variant }: LinkButtonProps) => {
         <img
           src={`https://cdn.simpleicons.org/${platformKey === 'twitter' ? 'X' : platformKey === 'youtube' ? 'YouTube' : platformKey === 'tiktok' ? 'TikTok' : platformKey === 'instagram' ? 'Instagram' : platformKey === 'twitch' ? 'Twitch' : 'Kick'}/${platformKey === 'youtube' ? 'FF0033' : platformKey === 'twitch' ? '9146FF' : platformKey === 'kick' ? '53FC18' : platformKey === 'instagram' ? 'E4405F' : 'FFFFFF'}`}
           alt=""
-          width={25}
-          height={25}
+          width={32}
+          height={32}
           loading="lazy"
-          className="relative z-10 size-[25px] shrink-0 object-contain drop-shadow-[0_0_7px_rgba(255,255,255,0.25)]"
+          className="relative z-10 size-8 shrink-0 object-contain"
+          style={{
+            filter: platformKey === 'youtube'
+              ? 'drop-shadow(0 0 3px #ff0033) drop-shadow(0 0 8px #ff0033) drop-shadow(0 0 14px rgba(255,0,51,.75))'
+              : platformKey === 'twitch'
+                ? 'drop-shadow(0 0 3px #9146ff) drop-shadow(0 0 8px #9146ff) drop-shadow(0 0 14px rgba(145,70,255,.75))'
+                : platformKey === 'kick'
+                  ? 'drop-shadow(0 0 3px #53fc18) drop-shadow(0 0 8px #53fc18) drop-shadow(0 0 14px rgba(83,252,24,.75))'
+                  : platformKey === 'tiktok'
+                    ? 'drop-shadow(-2px 0 3px #25f4ee) drop-shadow(2px 0 3px #fe2c55) drop-shadow(0 0 10px rgba(37,244,238,.8))'
+                    : platformKey === 'instagram'
+                      ? 'drop-shadow(0 0 3px #ff3b9d) drop-shadow(0 0 8px #ff8a00) drop-shadow(0 0 14px rgba(225,48,108,.75))'
+                      : 'drop-shadow(0 0 3px #ffffff) drop-shadow(0 0 8px #ffffff) drop-shadow(0 0 14px rgba(255,255,255,.7))',
+          }}
           aria-hidden="true"
         />
       </span>
