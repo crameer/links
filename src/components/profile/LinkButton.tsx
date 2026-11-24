@@ -48,7 +48,12 @@ export const LinkButton = ({ link, variant }: LinkButtonProps) => {
         : title.includes('tiktok') ? 'tiktok'
           : title.includes('instagram') ? 'instagram'
             : 'twitter'
-  const platform = platformStyles[platformKey] ?? platformStyles.twitter
+  const platform = platformStyles[platformKey] ?? {
+    color: '#ffffff',
+    glow: 'rgba(255,255,255,0.42)',
+    tile: 'bg-white/15 ring-white/45',
+    label: 'X (TWITTER)',
+  }
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => triggerFlare(e.clientX, e.clientY)
 
   return (
