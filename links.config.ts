@@ -68,7 +68,7 @@ const config: LinksConfig = {
     font: 'Space_Grotesk',
     background: {
       type: 'image',
-      src: '/craameer-background.jpg',
+      src: '/craameer-background.png',
       overlayOpacity: 0.32,
       fit: 'cover',
     },
