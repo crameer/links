@@ -11,7 +11,7 @@ import { cn } from '@/lib/cn'
 import type { Link } from '@/types/config'
 
 const linkButtonVariants = cva(
-  'relative isolate flex min-h-[72px] sm:min-h-[78px] w-full items-center gap-3 sm:gap-4 overflow-hidden rounded-2xl border px-3 sm:px-4 py-3 sm:py-3.5 text-left text-white transition-all duration-300 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70',
+  'relative isolate flex min-h-[58px] sm:min-h-[78px] w-full items-center gap-2 sm:gap-4 overflow-hidden rounded-2xl border px-2.5 sm:px-4 py-2 sm:py-3.5 text-left text-white transition-all duration-300 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70',
   {
     variants: {
       variant: {
@@ -80,7 +80,7 @@ export const LinkButton = ({ link, variant }: LinkButtonProps) => {
         style={{ background: platform.color, boxShadow: `0 0 7px ${platform.glow}` }}
       />
       <span
-        className={cn('relative grid size-10 sm:size-12 shrink-0 place-items-center rounded-xl ring-1 transition-all duration-300 group-hover:scale-105', platform.tile)}
+        className={cn('relative grid size-8 sm:size-12 shrink-0 place-items-center rounded-xl ring-1 transition-all duration-300 group-hover:scale-105', platform.tile)}
         style={{ backgroundColor: `${platform.color}12`, boxShadow: `0 0 5px ${platform.glow}`, borderColor: `${platform.color}66` }}
       >
         <img
@@ -89,16 +89,16 @@ export const LinkButton = ({ link, variant }: LinkButtonProps) => {
           width={30}
           height={30}
           loading="lazy"
-          className="relative z-10 size-[26px] sm:size-[30px] shrink-0 object-contain"
+          className="relative z-10 size-[23px] sm:size-[30px] shrink-0 object-contain"
           style={{ filter: iconFilter }}
           aria-hidden="true"
         />
       </span>
       <span className="relative min-w-0 flex-1">
-        <span className="mb-0.5 block text-[10px] font-bold tracking-[0.2em]" style={{ color: platform.color, textShadow: `0 0 6px ${platform.glow}` }}>{platform.label}</span>
-        <span className="block truncate text-base font-bold tracking-wide text-white">{link.title}</span>
+        <span className="mb-0.5 block text-[8px] sm:text-[10px] font-bold tracking-[0.16em] sm:tracking-[0.2em]" style={{ color: platform.color, textShadow: `0 0 6px ${platform.glow}` }}>{platform.label}</span>
+        <span className="block truncate text-sm sm:text-base font-bold tracking-wide text-white">{link.title}</span>
         {(platformKey === 'tiktok' || link.description) && (
-          <span className="mt-0.5 block line-clamp-2 sm:truncate text-xs font-medium text-white/75">
+          <span className="mt-0.5 block line-clamp-1 sm:line-clamp-2 sm:truncate text-[10px] sm:text-xs font-medium text-white/75">
             {platformKey === 'tiktok'
               ? 'Clips, coches y directos'
               : link.description}
@@ -106,10 +106,10 @@ export const LinkButton = ({ link, variant }: LinkButtonProps) => {
         )}
       </span>
       <span
-        className="relative flex size-8 sm:size-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white/80 transition-all duration-300 group-hover:border-white/40 group-hover:bg-white/15 group-hover:text-white"
+        className="relative flex size-7 sm:size-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white/80 transition-all duration-300 group-hover:border-white/40 group-hover:bg-white/15 group-hover:text-white"
         aria-hidden="true"
       >
-        <ArrowUpRight size={18} />
+        <ArrowUpRight size={16} />
       </span>
     </motion.a>
   )
