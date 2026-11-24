@@ -50,7 +50,13 @@ export const LinkButton = ({ link, variant }: LinkButtonProps) => {
       target="_blank"
       rel="noopener noreferrer"
       className={cn(linkButtonVariants({ variant }), 'hover:-translate-y-0.5')}
-      style={{ '--platform-color': platform.color, '--platform-glow': platform.glow } as React.CSSProperties}
+      style={{
+        '--platform-color': platform.color,
+        '--platform-glow': platform.glow,
+        background: `linear-gradient(110deg, ${platform.color}35 0%, rgba(13, 8, 30, 0.94) 43%, rgba(5, 5, 16, 0.97) 100%)`,
+        borderColor: `${platform.color}cc`,
+        boxShadow: `0 0 8px ${platform.glow}, 0 0 22px ${platform.glow}, inset 0 0 18px ${platform.glow}, 0 10px 28px rgba(0,0,0,0.28)`,
+      } as React.CSSProperties}
       onClick={handleClick}
       whileHover={{ scale: 1.018, y: -2 }}
       whileTap={{ scale: 0.985 }}
@@ -61,12 +67,12 @@ export const LinkButton = ({ link, variant }: LinkButtonProps) => {
         style={{ background: platform.color, boxShadow: `0 0 16px ${platform.glow}` }}
       />
       <span
-        className={cn('relative grid size-12 shrink-0 place-items-center rounded-xl ring-1 transition-all duration-300 group-hover:scale-110', platform.tile)}
+        className={cn('relative grid size-12 shrink-0 place-items-center rounded-xl ring-1 transition-all duration-300 group-hover:scale-110', platform.tile)}\n        style={{ backgroundColor: `${platform.color}26`, boxShadow: `0 0 14px ${platform.glow}`, borderColor: `${platform.color}99` }}
       >
         {link.icon && <Icon icon={link.icon} size={23} className="shrink-0" />}
       </span>
       <span className="relative min-w-0 flex-1">
-        <span className="mb-0.5 block text-[10px] font-bold tracking-[0.2em] text-white/45">{platform.label}</span>
+        <span className="mb-0.5 block text-[10px] font-bold tracking-[0.2em]" style={{ color: platform.color, textShadow: `0 0 10px ${platform.glow}` }}>{platform.label}</span>
         <span className="block truncate text-base font-bold tracking-wide text-white">{link.title}</span>
         {link.description && (
           <span className="mt-0.5 block truncate text-xs font-medium text-white/65">{link.description}</span>
