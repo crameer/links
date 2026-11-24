@@ -38,8 +38,8 @@ export const ProfileCard = ({ config }: { config: ResolvedConfig }) => {
               className="text-2xl font-bold"
               style={{
                 color: '#080d08',
-                WebkitTextStroke: '0.7px #9cff45',
-                textShadow: '0 1px 0 #c7ff91, 0 0 5px rgba(126,255,45,.9), 0 0 12px rgba(126,255,45,.72), 0 0 22px rgba(126,255,45,.42)',
+                WebkitTextStroke: '0.55px #9cff45',
+                textShadow: '0 1px 0 rgba(199,255,145,.65), 0 0 3px rgba(126,255,45,.58), 0 0 8px rgba(126,255,45,.34)',
               }}
             >
               {profile.name}
@@ -54,10 +54,11 @@ export const ProfileCard = ({ config }: { config: ResolvedConfig }) => {
           </div>
           {profile.username && (
             <p
-              className="text-sm mt-0.5 font-semibold"
+              className="text-sm mt-0.5 font-bold"
               style={{
-                color: '#e8eee8',
-                textShadow: '0 0 3px rgba(170,255,130,.5), 0 0 8px rgba(126,255,45,.28)',
+                color: '#080d08',
+                WebkitTextStroke: '0.4px #9cff45',
+                textShadow: '0 0 3px rgba(126,255,45,.55), 0 0 7px rgba(126,255,45,.3)',
               }}
             >
               @{profile.username}
@@ -69,7 +70,7 @@ export const ProfileCard = ({ config }: { config: ResolvedConfig }) => {
               style={{
                 color: '#080d08',
                 WebkitTextStroke: '0.35px #9cff45',
-                textShadow: '0 0 4px rgba(126,255,45,.82), 0 0 10px rgba(126,255,45,.55)',
+                textShadow: '0 0 3px rgba(126,255,45,.58), 0 0 7px rgba(126,255,45,.32)',
               }}
             >
               {profile.bio}
