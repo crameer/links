@@ -100,7 +100,7 @@ export const LinkButton = ({ link, variant }: LinkButtonProps) => {
         {(platformKey === 'tiktok' || link.description) && (
           <span className="mt-0.5 block truncate text-xs font-medium text-white/75">
             {platformKey === 'tiktok'
-              ? 'Clips, coches y directos también aquí'
+              ? 'Clips, coches y directos'
               : link.description}
           </span>
         )}
