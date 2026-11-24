@@ -47,7 +47,7 @@ export const LinkButton = ({ link, variant }: LinkButtonProps) => {
         : title.includes('tiktok') ? 'tiktok'
           : title.includes('instagram') ? 'instagram'
             : 'twitter'
-  const platform = platformStyles[platformKey]
+  const platform = platformStyles[platformKey] ?? platformStyles.twitter
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => triggerFlare(e.clientX, e.clientY)
 
   const iconUrl = `https://cdn.simpleicons.org/${platformKey === 'twitter' ? 'X' : platformKey === 'youtube' ? 'YouTube' : platformKey === 'tiktok' ? 'TikTok' : platformKey === 'instagram' ? 'Instagram' : platformKey === 'twitch' ? 'Twitch' : 'Kick'}/${platformKey === 'youtube' ? 'FF0033' : platformKey === 'twitch' ? '9146FF' : platformKey === 'kick' ? '53FC18' : platformKey === 'instagram' ? 'E4405F' : 'FFFFFF'}`
