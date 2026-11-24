@@ -35,11 +35,12 @@ export const ProfileCard = ({ config }: { config: ResolvedConfig }) => {
         <div>
           <div className="flex items-center justify-center gap-1.5">
             <h1
-              className="text-2xl font-bold"
+              className="text-2xl font-black tracking-wide"
               style={{
                 color: '#080d08',
-                WebkitTextStroke: '0.55px #9cff45',
-                textShadow: '0 1px 0 rgba(199,255,145,.65), 0 0 3px rgba(126,255,45,.58), 0 0 8px rgba(126,255,45,.34)',
+                WebkitTextStroke: '1.1px #9cff45',
+                paintOrder: 'stroke fill',
+                textShadow: '0 1px 0 rgba(0,0,0,.95), 0 0 4px rgba(126,255,45,.8), 0 0 11px rgba(126,255,45,.48)',
               }}
             >
               {profile.name}
@@ -54,11 +55,12 @@ export const ProfileCard = ({ config }: { config: ResolvedConfig }) => {
           </div>
           {profile.username && (
             <p
-              className="text-sm mt-0.5 font-bold"
+              className="text-sm mt-0.5 font-black tracking-wide"
               style={{
                 color: '#080d08',
-                WebkitTextStroke: '0.4px #9cff45',
-                textShadow: '0 0 3px rgba(126,255,45,.55), 0 0 7px rgba(126,255,45,.3)',
+                WebkitTextStroke: '0.9px #9cff45',
+                paintOrder: 'stroke fill',
+                textShadow: '0 1px 0 rgba(0,0,0,.95), 0 0 4px rgba(126,255,45,.72), 0 0 9px rgba(126,255,45,.4)',
               }}
             >
               @{profile.username}
@@ -66,11 +68,12 @@ export const ProfileCard = ({ config }: { config: ResolvedConfig }) => {
           )}
           {profile.bio && (
             <p
-              className="text-sm mt-2 max-w-xs leading-relaxed font-bold"
+              className="text-sm mt-2 max-w-xs leading-relaxed font-black tracking-wide"
               style={{
                 color: '#080d08',
-                WebkitTextStroke: '0.35px #9cff45',
-                textShadow: '0 0 3px rgba(126,255,45,.58), 0 0 7px rgba(126,255,45,.32)',
+                WebkitTextStroke: '0.85px #9cff45',
+                paintOrder: 'stroke fill',
+                textShadow: '0 1px 0 rgba(0,0,0,.95), 0 0 4px rgba(126,255,45,.75), 0 0 9px rgba(126,255,45,.42)',
               }}
             >
               {profile.bio}
