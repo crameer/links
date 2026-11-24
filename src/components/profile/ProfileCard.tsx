@@ -18,24 +18,26 @@ export const ProfileCard = ({ config }: { config: ResolvedConfig }) => {
   return (
     <motion.div
       className={cn(
-        'relative z-10 w-full max-w-md mx-auto px-4 py-5 sm:py-8',
-        'flex flex-col items-center gap-4 sm:gap-6',
+        'relative z-10 w-full max-w-md mx-auto px-3 py-2 sm:px-4 sm:py-8',
+        'flex flex-col items-center gap-2.5 sm:gap-6',
       )}
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
-      <div className="flex flex-col items-center gap-2 sm:gap-3 text-center">
-        <Avatar
-          {...(profile.avatar !== undefined ? { src: profile.avatar } : {})}
-          name={profile.name}
-          glow={appearance.avatarGlow}
-          size={96}
-        />
+      <div className="flex flex-col items-center gap-1.5 sm:gap-3 text-center">
+        <div className="origin-center scale-[0.72] -my-3 sm:my-0 sm:scale-100">
+          <Avatar
+            {...(profile.avatar !== undefined ? { src: profile.avatar } : {})}
+            name={profile.name}
+            glow={appearance.avatarGlow}
+            size={96}
+          />
+        </div>
         <div>
           <div className="flex items-center justify-center gap-1.5">
             <h1
-              className="text-2xl font-black tracking-wide"
+              className="text-xl sm:text-2xl font-black tracking-wide"
               style={{
                 color: '#080d08',
                 WebkitTextStroke: '1.1px #9cff45',
@@ -55,7 +57,7 @@ export const ProfileCard = ({ config }: { config: ResolvedConfig }) => {
           </div>
           {profile.username && (
             <p
-              className="text-sm mt-0.5 font-black tracking-wide"
+              className="text-xs sm:text-sm mt-0.5 font-black tracking-wide"
               style={{
                 color: '#080d08',
                 WebkitTextStroke: '0.9px #9cff45',
@@ -68,7 +70,7 @@ export const ProfileCard = ({ config }: { config: ResolvedConfig }) => {
           )}
           {profile.bio && (
             <p
-              className="text-sm mt-1.5 sm:mt-2 max-w-xs leading-relaxed font-black tracking-wide"
+              className="text-xs sm:text-sm mt-1 sm:mt-2 max-w-xs leading-snug sm:leading-relaxed font-black tracking-wide"
               style={{
                 color: '#080d08',
                 WebkitTextStroke: '0.85px #9cff45',
@@ -80,10 +82,14 @@ export const ProfileCard = ({ config }: { config: ResolvedConfig }) => {
             </p>
           )}
         </div>
-        {socials.length > 0 && <SocialIcons socials={socials} />}
+        {socials.length > 0 && (
+          <div className="origin-center scale-90 -my-1 sm:my-0 sm:scale-100">
+            <SocialIcons socials={socials} />
+          </div>
+        )}
       </div>
 
-      <div className="flex flex-col gap-2.5 sm:gap-3 w-full">
+      <div className="flex flex-col gap-1.5 sm:gap-3 w-full">
         {links.map((link, index) => (
           <motion.div
             key={link.url}
@@ -96,7 +102,7 @@ export const ProfileCard = ({ config }: { config: ResolvedConfig }) => {
         ))}
       </div>
 
-      <p className="text-xs text-white/20 select-none mt-1">
+      <p className="text-[10px] sm:text-xs text-white/20 select-none mt-0.5 sm:mt-1">
         Made by{' '}
         <a
           href="https://github.com/germondai"
