@@ -26,11 +26,9 @@ export const Background = ({ background }: { background?: BackgroundConfig }) =>
           className="absolute inset-0"
           style={{
             backgroundImage: `url(${background.src})`,
-            backgroundSize: background.fit === 'contain' ? 'contain' : 'cover',
-            backgroundPosition: 'center 28px',
+            backgroundSize: background.fit === 'contain' ? 'contain' : '100% 100%',
+            backgroundPosition: 'center center',
             backgroundRepeat: 'no-repeat',
-            transform: 'scale(1.08)',
-            transformOrigin: 'center center',
           }}
         />
         <div className="absolute inset-0 bg-black" style={{ opacity: overlay }} />
