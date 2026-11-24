@@ -110,7 +110,31 @@ const LABELS: Record<SocialPlatform, string> = {
   email: 'Email',
 }
 
+const BRAND_ICONS: Partial<Record<SocialPlatform, { slug: string; color: string; glow: string }>> = {
+  youtube: { slug: 'YouTube', color: 'FF0033', glow: 'drop-shadow(0 0 4px rgba(255,0,51,.8)) drop-shadow(0 0 8px rgba(255,0,51,.45))' },
+  twitch: { slug: 'Twitch', color: '9146FF', glow: 'drop-shadow(0 0 4px rgba(145,70,255,.85)) drop-shadow(0 0 8px rgba(145,70,255,.45))' },
+  tiktok: { slug: 'TikTok', color: 'FFFFFF', glow: 'drop-shadow(-2px 0 3px rgba(37,244,238,.95)) drop-shadow(2px 0 3px rgba(254,44,85,.95)) drop-shadow(0 0 7px rgba(255,255,255,.45))' },
+  instagram: { slug: 'Instagram', color: 'FF4FA3', glow: 'drop-shadow(0 0 4px rgba(255,79,163,.85)) drop-shadow(0 0 8px rgba(255,138,0,.45))' },
+  twitter: { slug: 'X', color: 'FFFFFF', glow: 'drop-shadow(0 0 4px rgba(255,255,255,.85)) drop-shadow(0 0 8px rgba(255,255,255,.4))' },
+}
+
 const SocialIcon = ({ platform }: { platform: SocialPlatform }) => {
+  const brand = BRAND_ICONS[platform]
+  if (brand) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={`https://cdn.simpleicons.org/${brand.slug}/${brand.color}`}
+        alt=""
+        width={18}
+        height={18}
+        loading="lazy"
+        aria-hidden="true"
+        className="size-[18px] object-contain transition-transform duration-200 group-hover:scale-110"
+        style={{ filter: brand.glow }}
+      />
+    )
+  }
   const slug = PROVIDER_SLUGS[platform]
   return slug ? <Icon icon={`icon:${slug}:mono:fff`} size={18} /> : FALLBACK_ICONS[platform]
 }
@@ -128,7 +152,7 @@ export const SocialIcons = ({ socials }: { socials: SocialLink[] }) => {
                 target={platform === 'email' ? undefined : '_blank'}
                 rel="noopener noreferrer"
                 className={cn(
-                  'opacity-50 hover:opacity-100 transition-all duration-200',
+                  'group opacity-80 hover:opacity-100 transition-all duration-200',
                   'hover:scale-110',
                 )}
                 aria-label={LABELS[platform]}
