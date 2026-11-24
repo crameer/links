@@ -27,7 +27,7 @@ export const Background = ({ background }: { background?: BackgroundConfig }) =>
           style={{
             backgroundImage: `url(${background.src})`,
             backgroundSize: background.fit === 'contain' ? 'contain' : 'cover',
-            backgroundPosition: 'center',
+            backgroundPosition: 'center top',
             backgroundRepeat: 'no-repeat',
           }}
         />
