@@ -6,7 +6,6 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
-import { Icon } from '@/components/ui/Icon'
 import { useFlare } from '@/hooks/useFlare'
 import { cn } from '@/lib/cn'
 import type { Link } from '@/types/config'
@@ -82,7 +81,15 @@ export const LinkButton = ({ link, variant }: LinkButtonProps) => {
         className={cn('relative grid size-12 shrink-0 place-items-center rounded-xl ring-1 transition-all duration-300 group-hover:scale-110', platform.tile)}
         style={{ backgroundColor: `${platform.color}26`, boxShadow: `0 0 14px ${platform.glow}`, borderColor: `${platform.color}99` }}
       >
-        {link.icon && <Icon icon={link.icon} size={23} className="shrink-0" />}
+        <img
+          src={`https://cdn.simpleicons.org/${platformKey === 'twitter' ? 'X' : platformKey === 'youtube' ? 'YouTube' : platformKey === 'tiktok' ? 'TikTok' : platformKey === 'instagram' ? 'Instagram' : platformKey === 'twitch' ? 'Twitch' : 'Kick'}/${platformKey === 'youtube' ? 'FF0033' : platformKey === 'twitch' ? '9146FF' : platformKey === 'kick' ? '53FC18' : platformKey === 'instagram' ? 'E4405F' : 'FFFFFF'}`}
+          alt=""
+          width={25}
+          height={25}
+          loading="lazy"
+          className="relative z-10 size-[25px] shrink-0 object-contain drop-shadow-[0_0_7px_rgba(255,255,255,0.25)]"
+          aria-hidden="true"
+        />
       </span>
       <span className="relative min-w-0 flex-1">
         <span className="mb-0.5 block text-[10px] font-bold tracking-[0.2em]" style={{ color: platform.color, textShadow: `0 0 10px ${platform.glow}` }}>{platform.label}</span>
