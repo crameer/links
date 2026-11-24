@@ -63,11 +63,11 @@ export const LinkButton = ({ link, variant }: LinkButtonProps) => {
       rel="noopener noreferrer"
       className={cn(linkButtonVariants({ variant }), 'hover:-translate-y-0.5')}
       style={{
-        backgroundColor: 'rgba(8, 5, 22, 0.055)',
-        backdropFilter: 'blur(7px) saturate(125%)',
-        WebkitBackdropFilter: 'blur(7px) saturate(125%)',
+        backgroundColor: 'rgba(8, 5, 22, 0.015)',
+        backdropFilter: 'blur(1.5px) saturate(108%)',
+        WebkitBackdropFilter: 'blur(1.5px) saturate(108%)',
         borderColor: `${platform.color}cc`,
-        boxShadow: `0 0 7px ${platform.glow}, 0 0 18px ${platform.glow}, inset 0 0 7px rgba(255,255,255,0.07), 0 8px 22px rgba(0,0,0,0.10)`,
+        boxShadow: `0 0 5px ${platform.glow}, 0 0 13px ${platform.glow}, inset 0 0 3px rgba(255,255,255,0.035)`,
       }}
       onClick={handleClick}
       whileHover={{ scale: 1.018, y: -2 }}
