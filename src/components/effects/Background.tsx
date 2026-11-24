@@ -29,6 +29,8 @@ export const Background = ({ background }: { background?: BackgroundConfig }) =>
             backgroundSize: background.fit === 'contain' ? 'contain' : 'cover',
             backgroundPosition: 'center 28px',
             backgroundRepeat: 'no-repeat',
+            transform: 'scale(1.08)',
+            transformOrigin: 'center center',
           }}
         />
         <div className="absolute inset-0 bg-black" style={{ opacity: overlay }} />
