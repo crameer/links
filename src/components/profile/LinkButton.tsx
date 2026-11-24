@@ -42,14 +42,13 @@ interface LinkButtonProps extends VariantProps<typeof linkButtonVariants> {
 export const LinkButton = ({ link, variant }: LinkButtonProps) => {
   const triggerFlare = useFlare()
   const title = link.title.toLowerCase()
-  const platform = platformStyles[
-    title.includes('youtube') ? 'youtube'
-      : title.includes('twitch') ? 'twitch'
-        : title.includes('kick') ? 'kick'
-          : title.includes('tiktok') ? 'tiktok'
-            : title.includes('instagram') ? 'instagram'
-              : 'twitter'
-  ]
+  const platformKey = title.includes('youtube') ? 'youtube'
+    : title.includes('twitch') ? 'twitch'
+      : title.includes('kick') ? 'kick'
+        : title.includes('tiktok') ? 'tiktok'
+          : title.includes('instagram') ? 'instagram'
+            : 'twitter'
+  const platform = platformStyles[platformKey] ?? platformStyles.twitter
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => triggerFlare(e.clientX, e.clientY)
 
   return (
