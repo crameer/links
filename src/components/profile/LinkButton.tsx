@@ -67,7 +67,8 @@ export const LinkButton = ({ link, variant }: LinkButtonProps) => {
         style={{ background: platform.color, boxShadow: `0 0 16px ${platform.glow}` }}
       />
       <span
-        className={cn('relative grid size-12 shrink-0 place-items-center rounded-xl ring-1 transition-all duration-300 group-hover:scale-110', platform.tile)}\n        style={{ backgroundColor: `${platform.color}26`, boxShadow: `0 0 14px ${platform.glow}`, borderColor: `${platform.color}99` }}
+        className={cn('relative grid size-12 shrink-0 place-items-center rounded-xl ring-1 transition-all duration-300 group-hover:scale-110', platform.tile)}
+        style={{ backgroundColor: `${platform.color}26`, boxShadow: `0 0 14px ${platform.glow}`, borderColor: `${platform.color}99` }}
       >
         {link.icon && <Icon icon={link.icon} size={23} className="shrink-0" />}
       </span>
