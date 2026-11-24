@@ -5,7 +5,7 @@
 
 import { cva, type VariantProps } from 'class-variance-authority'
 import { motion } from 'framer-motion'
-import { ArrowUpRight, ExternalLink } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { Icon } from '@/components/ui/Icon'
 import { useFlare } from '@/hooks/useFlare'
 import { cn } from '@/lib/cn'
@@ -19,7 +19,7 @@ const linkButtonVariants = cva(
         default: 'border-white/15 bg-slate-950/65 shadow-lg shadow-black/20 backdrop-blur-xl hover:border-white/35 hover:bg-slate-950/80',
         pill: 'border-white/15 bg-slate-950/65 shadow-lg shadow-black/20 backdrop-blur-xl hover:border-white/35 hover:bg-slate-950/80',
         outline: 'border-white/25 bg-slate-950/45 backdrop-blur-xl hover:border-white/50 hover:bg-slate-950/65',
-        neon: 'border-white/20 bg-slate-950/65 shadow-[0_8px_30px_rgba(0,0,0,0.28)] backdrop-blur-xl hover:border-[var(--platform-color)] hover:shadow-[0_0_26px_var(--platform-glow),0_10px_30px_rgba(0,0,0,0.3)]',
+        neon: 'border backdrop-blur-xl',
       },
     },
     defaultVariants: { variant: 'default' },
@@ -32,7 +32,7 @@ const platformStyles: Record<string, { color: string; glow: string; tile: string
   kick: { color: '#53e58b', glow: 'rgba(83,229,139,0.28)', tile: 'bg-emerald-400/15 ring-emerald-300/30', label: 'KICK' },
   tiktok: { color: '#63eaf0', glow: 'rgba(99,234,240,0.28)', tile: 'bg-cyan-400/15 ring-cyan-300/30', label: 'TIKTOK' },
   instagram: { color: '#ff83c8', glow: 'rgba(255,83,173,0.3)', tile: 'bg-fuchsia-400/15 ring-fuchsia-300/30', label: 'INSTAGRAM' },
-  twitter: { color: '#d8d8ff', glow: 'rgba(190,190,255,0.22)', tile: 'bg-white/10 ring-white/25', label: 'X / TWITTER' },
+  twitter: { color: '#ffffff', glow: 'rgba(255,255,255,0.34)', tile: 'bg-white/15 ring-white/45', label: 'X (TWITTER)' },
 }
 
 interface LinkButtonProps extends VariantProps<typeof linkButtonVariants> {
@@ -57,11 +57,11 @@ export const LinkButton = ({ link, variant }: LinkButtonProps) => {
       transition={{ type: 'spring', stiffness: 380, damping: 24 }}
     >
       <span
-        className="pointer-events-none absolute inset-y-3 left-0 w-[3px] rounded-r-full opacity-80 transition-all duration-300 group-hover:inset-y-2 group-hover:w-1"
+        className="pointer-events-none absolute inset-y-2 left-0 w-1 rounded-r-full opacity-100 transition-all duration-300 group-hover:inset-y-1 group-hover:w-1.5"
         style={{ background: platform.color, boxShadow: `0 0 16px ${platform.glow}` }}
       />
       <span
-        className={cn('relative grid size-12 shrink-0 place-items-center rounded-xl ring-1 transition-transform duration-300 group-hover:scale-105', platform.tile)}
+        className={cn('relative grid size-12 shrink-0 place-items-center rounded-xl ring-1 transition-all duration-300 group-hover:scale-110', platform.tile)}
       >
         {link.icon && <Icon icon={link.icon} size={23} className="shrink-0" />}
       </span>
