@@ -53,9 +53,9 @@ export const LinkButton = ({ link, variant }: LinkButtonProps) => {
       style={{
         '--platform-color': platform.color,
         '--platform-glow': platform.glow,
-        background: `linear-gradient(110deg, ${platform.color}35 0%, rgba(13, 8, 30, 0.94) 43%, rgba(5, 5, 16, 0.97) 100%)`,
+        background: `linear-gradient(110deg, ${platform.color}55 0%, ${platform.color}22 34%, rgba(8, 5, 22, 0.96) 78%, rgba(5, 5, 16, 0.98) 100%)`,
         borderColor: `${platform.color}cc`,
-        boxShadow: `0 0 8px ${platform.glow}, 0 0 22px ${platform.glow}, inset 0 0 18px ${platform.glow}, 0 10px 28px rgba(0,0,0,0.28)`,
+        boxShadow: `0 0 10px ${platform.glow}, 0 0 28px ${platform.glow}, inset 0 0 24px ${platform.glow}, 0 10px 28px rgba(0,0,0,0.28)`,
       } as React.CSSProperties}
       onClick={handleClick}
       whileHover={{ scale: 1.018, y: -2 }}
