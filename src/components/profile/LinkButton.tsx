@@ -16,10 +16,10 @@ const linkButtonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'border-white/15 bg-slate-950/65 shadow-lg shadow-black/20 backdrop-blur-xl hover:border-white/35 hover:bg-slate-950/80',
-        pill: 'border-white/15 bg-slate-950/65 shadow-lg shadow-black/20 backdrop-blur-xl hover:border-white/35 hover:bg-slate-950/80',
-        outline: 'border-white/25 bg-slate-950/45 backdrop-blur-xl hover:border-white/50 hover:bg-slate-950/65',
-        neon: 'border backdrop-blur-xl',
+        default: 'shadow-lg shadow-black/20 backdrop-blur-2xl hover:-translate-y-0.5',
+        pill: 'shadow-lg shadow-black/20 backdrop-blur-2xl hover:-translate-y-0.5',
+        outline: 'backdrop-blur-2xl hover:-translate-y-0.5',
+        neon: 'backdrop-blur-2xl hover:-translate-y-0.5',
       },
     },
     defaultVariants: { variant: 'default' },
@@ -27,12 +27,12 @@ const linkButtonVariants = cva(
 )
 
 const platformStyles: Record<string, { color: string; glow: string; tile: string; label: string }> = {
-  youtube: { color: '#ff4545', glow: 'rgba(255,69,69,0.28)', tile: 'bg-red-500/15 ring-red-400/30', label: 'YOUTUBE' },
-  twitch: { color: '#b58aff', glow: 'rgba(145,70,255,0.32)', tile: 'bg-violet-500/20 ring-violet-300/35', label: 'TWITCH' },
-  kick: { color: '#53e58b', glow: 'rgba(83,229,139,0.28)', tile: 'bg-emerald-400/15 ring-emerald-300/30', label: 'KICK' },
-  tiktok: { color: '#63eaf0', glow: 'rgba(99,234,240,0.28)', tile: 'bg-cyan-400/15 ring-cyan-300/30', label: 'TIKTOK' },
-  instagram: { color: '#ff83c8', glow: 'rgba(255,83,173,0.3)', tile: 'bg-fuchsia-400/15 ring-fuchsia-300/30', label: 'INSTAGRAM' },
-  twitter: { color: '#ffffff', glow: 'rgba(255,255,255,0.34)', tile: 'bg-white/15 ring-white/45', label: 'X (TWITTER)' },
+  youtube: { color: '#ff4545', glow: 'rgba(255,69,69,0.42)', tile: 'bg-red-500/15 ring-red-400/30', label: 'YOUTUBE' },
+  twitch: { color: '#b58aff', glow: 'rgba(145,70,255,0.44)', tile: 'bg-violet-500/20 ring-violet-300/35', label: 'TWITCH' },
+  kick: { color: '#53e58b', glow: 'rgba(83,229,139,0.42)', tile: 'bg-emerald-400/15 ring-emerald-300/30', label: 'KICK' },
+  tiktok: { color: '#63eaf0', glow: 'rgba(99,234,240,0.42)', tile: 'bg-cyan-400/15 ring-cyan-300/30', label: 'TIKTOK' },
+  instagram: { color: '#ff83c8', glow: 'rgba(255,83,173,0.44)', tile: 'bg-fuchsia-400/15 ring-fuchsia-300/30', label: 'INSTAGRAM' },
+  twitter: { color: '#ffffff', glow: 'rgba(255,255,255,0.42)', tile: 'bg-white/15 ring-white/45', label: 'X (TWITTER)' },
 }
 
 interface LinkButtonProps extends VariantProps<typeof linkButtonVariants> {
@@ -41,7 +41,15 @@ interface LinkButtonProps extends VariantProps<typeof linkButtonVariants> {
 
 export const LinkButton = ({ link, variant }: LinkButtonProps) => {
   const triggerFlare = useFlare()
-  const platform = platformStyles[link.title.toLowerCase().includes('youtube') ? 'youtube' : link.title.toLowerCase().includes('twitch') ? 'twitch' : link.title.toLowerCase().includes('kick') ? 'kick' : link.title.toLowerCase().includes('tiktok') ? 'tiktok' : link.title.toLowerCase().includes('instagram') ? 'instagram' : 'twitter']
+  const title = link.title.toLowerCase()
+  const platform = platformStyles[
+    title.includes('youtube') ? 'youtube'
+      : title.includes('twitch') ? 'twitch'
+        : title.includes('kick') ? 'kick'
+          : title.includes('tiktok') ? 'tiktok'
+            : title.includes('instagram') ? 'instagram'
+              : 'twitter'
+  ]
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => triggerFlare(e.clientX, e.clientY)
 
   return (
@@ -51,9 +59,11 @@ export const LinkButton = ({ link, variant }: LinkButtonProps) => {
       rel="noopener noreferrer"
       className={cn(linkButtonVariants({ variant }), 'hover:-translate-y-0.5')}
       style={{
-        background: `linear-gradient(110deg, ${platform.color}55 0%, ${platform.color}22 34%, rgba(8, 5, 22, 0.96) 78%, rgba(5, 5, 16, 0.98) 100%)`,
+        backgroundColor: 'rgba(8, 5, 22, 0.22)',
+        backdropFilter: 'blur(22px) saturate(165%)',
+        WebkitBackdropFilter: 'blur(22px) saturate(165%)',
         borderColor: `${platform.color}cc`,
-        boxShadow: `0 0 10px ${platform.glow}, 0 0 28px ${platform.glow}, inset 0 0 24px ${platform.glow}, 0 10px 28px rgba(0,0,0,0.28)`,
+        boxShadow: `0 0 9px ${platform.glow}, 0 0 24px ${platform.glow}, inset 0 0 18px ${platform.glow}, 0 10px 28px rgba(0,0,0,0.16)`,
       }}
       onClick={handleClick}
       whileHover={{ scale: 1.018, y: -2 }}
@@ -74,11 +84,11 @@ export const LinkButton = ({ link, variant }: LinkButtonProps) => {
         <span className="mb-0.5 block text-[10px] font-bold tracking-[0.2em]" style={{ color: platform.color, textShadow: `0 0 10px ${platform.glow}` }}>{platform.label}</span>
         <span className="block truncate text-base font-bold tracking-wide text-white">{link.title}</span>
         {link.description && (
-          <span className="mt-0.5 block truncate text-xs font-medium text-white/65">{link.description}</span>
+          <span className="mt-0.5 block truncate text-xs font-medium text-white/75">{link.description}</span>
         )}
       </span>
       <span
-        className="relative flex size-9 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/55 transition-all duration-300 group-hover:border-white/30 group-hover:bg-white/10 group-hover:text-white"
+        className="relative flex size-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white/80 transition-all duration-300 group-hover:border-white/40 group-hover:bg-white/15 group-hover:text-white"
         aria-hidden="true"
       >
         <ArrowUpRight size={18} />
