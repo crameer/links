@@ -26,12 +26,12 @@ const linkButtonVariants = cva(
 )
 
 const platformStyles: Record<string, { color: string; glow: string; tile: string; label: string }> = {
-  youtube: { color: '#ff4545', glow: 'rgba(255,69,69,0.42)', tile: 'bg-red-500/15 ring-red-400/30', label: 'YOUTUBE' },
-  twitch: { color: '#b58aff', glow: 'rgba(145,70,255,0.44)', tile: 'bg-violet-500/20 ring-violet-300/35', label: 'TWITCH' },
-  kick: { color: '#53e58b', glow: 'rgba(83,229,139,0.42)', tile: 'bg-emerald-400/15 ring-emerald-300/30', label: 'KICK' },
-  tiktok: { color: '#63eaf0', glow: 'rgba(99,234,240,0.42)', tile: 'bg-cyan-400/15 ring-cyan-300/30', label: 'TIKTOK' },
-  instagram: { color: '#ff83c8', glow: 'rgba(255,83,173,0.44)', tile: 'bg-fuchsia-400/15 ring-fuchsia-300/30', label: 'INSTAGRAM' },
-  twitter: { color: '#ffffff', glow: 'rgba(255,255,255,0.42)', tile: 'bg-white/15 ring-white/45', label: 'X (TWITTER)' },
+  youtube: { color: '#ff4545', glow: 'rgba(255,69,69,0.30)', tile: 'bg-red-500/10 ring-red-400/25', label: 'YOUTUBE' },
+  twitch: { color: '#b58aff', glow: 'rgba(145,70,255,0.30)', tile: 'bg-violet-500/10 ring-violet-300/25', label: 'TWITCH' },
+  kick: { color: '#53e58b', glow: 'rgba(83,229,139,0.28)', tile: 'bg-emerald-400/10 ring-emerald-300/25', label: 'KICK' },
+  tiktok: { color: '#63eaf0', glow: 'rgba(99,234,240,0.28)', tile: 'bg-cyan-400/10 ring-cyan-300/25', label: 'TIKTOK' },
+  instagram: { color: '#ff83c8', glow: 'rgba(255,83,173,0.30)', tile: 'bg-fuchsia-400/10 ring-fuchsia-300/25', label: 'INSTAGRAM' },
+  twitter: { color: '#ffffff', glow: 'rgba(255,255,255,0.28)', tile: 'bg-white/10 ring-white/30', label: 'X (TWITTER)' },
 }
 
 interface LinkButtonProps extends VariantProps<typeof linkButtonVariants> {
@@ -47,13 +47,14 @@ export const LinkButton = ({ link, variant }: LinkButtonProps) => {
         : title.includes('tiktok') ? 'tiktok'
           : title.includes('instagram') ? 'instagram'
             : 'twitter'
-  const platform = platformStyles[platformKey] ?? {
-    color: '#ffffff',
-    glow: 'rgba(255,255,255,0.42)',
-    tile: 'bg-white/15 ring-white/45',
-    label: 'X (TWITTER)',
-  }
+  const platform = platformStyles[platformKey]
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => triggerFlare(e.clientX, e.clientY)
+
+  const iconUrl = `https://cdn.simpleicons.org/${platformKey === 'twitter' ? 'X' : platformKey === 'youtube' ? 'YouTube' : platformKey === 'tiktok' ? 'TikTok' : platformKey === 'instagram' ? 'Instagram' : platformKey === 'twitch' ? 'Twitch' : 'Kick'}/${platformKey === 'youtube' ? 'FF0033' : platformKey === 'twitch' ? '9146FF' : platformKey === 'kick' ? '53FC18' : platformKey === 'instagram' ? 'E4405F' : 'FFFFFF'}`
+
+  const iconFilter = platformKey === 'tiktok'
+    ? 'drop-shadow(-1px 0 2px rgba(37,244,238,.65)) drop-shadow(1px 0 2px rgba(254,44,85,.55))'
+    : `drop-shadow(0 0 2px ${platform.color}) drop-shadow(0 0 4px ${platform.glow})`
 
   return (
     <motion.a
@@ -66,7 +67,7 @@ export const LinkButton = ({ link, variant }: LinkButtonProps) => {
         backdropFilter: 'blur(1.5px) saturate(108%)',
         WebkitBackdropFilter: 'blur(1.5px) saturate(108%)',
         borderColor: `${platform.color}cc`,
-        boxShadow: `0 0 5px ${platform.glow}, 0 0 13px ${platform.glow}, inset 0 0 3px rgba(255,255,255,0.035)`,
+        boxShadow: `0 0 4px ${platform.glow}, 0 0 9px ${platform.glow}, inset 0 0 3px rgba(255,255,255,0.035)`,
       }}
       onClick={handleClick}
       whileHover={{ scale: 1.018, y: -2 }}
@@ -75,37 +76,25 @@ export const LinkButton = ({ link, variant }: LinkButtonProps) => {
     >
       <span
         className="pointer-events-none absolute inset-y-2 left-0 w-1 rounded-r-full opacity-100 transition-all duration-300 group-hover:inset-y-1 group-hover:w-1.5"
-        style={{ background: platform.color, boxShadow: `0 0 16px ${platform.glow}` }}
+        style={{ background: platform.color, boxShadow: `0 0 7px ${platform.glow}` }}
       />
       <span
-        className={cn('relative grid size-12 shrink-0 place-items-center rounded-xl ring-1 transition-all duration-300 group-hover:scale-110', platform.tile)}
-        style={{ backgroundColor: `${platform.color}26`, boxShadow: `0 0 14px ${platform.glow}`, borderColor: `${platform.color}99` }}
+        className={cn('relative grid size-12 shrink-0 place-items-center rounded-xl ring-1 transition-all duration-300 group-hover:scale-105', platform.tile)}
+        style={{ backgroundColor: `${platform.color}12`, boxShadow: `0 0 5px ${platform.glow}`, borderColor: `${platform.color}66` }}
       >
         <img
-          src={`https://cdn.simpleicons.org/${platformKey === 'twitter' ? 'X' : platformKey === 'youtube' ? 'YouTube' : platformKey === 'tiktok' ? 'TikTok' : platformKey === 'instagram' ? 'Instagram' : platformKey === 'twitch' ? 'Twitch' : 'Kick'}/${platformKey === 'youtube' ? 'FF0033' : platformKey === 'twitch' ? '9146FF' : platformKey === 'kick' ? '53FC18' : platformKey === 'instagram' ? 'E4405F' : 'FFFFFF'}`}
+          src={iconUrl}
           alt=""
-          width={32}
-          height={32}
+          width={30}
+          height={30}
           loading="lazy"
-          className="relative z-10 size-8 shrink-0 object-contain"
-          style={{
-            filter: platformKey === 'youtube'
-              ? 'drop-shadow(0 0 3px #ff0033) drop-shadow(0 0 8px #ff0033) drop-shadow(0 0 14px rgba(255,0,51,.75))'
-              : platformKey === 'twitch'
-                ? 'drop-shadow(0 0 3px #9146ff) drop-shadow(0 0 8px #9146ff) drop-shadow(0 0 14px rgba(145,70,255,.75))'
-                : platformKey === 'kick'
-                  ? 'drop-shadow(0 0 3px #53fc18) drop-shadow(0 0 8px #53fc18) drop-shadow(0 0 14px rgba(83,252,24,.75))'
-                  : platformKey === 'tiktok'
-                    ? 'drop-shadow(-2px 0 3px #25f4ee) drop-shadow(2px 0 3px #fe2c55) drop-shadow(0 0 10px rgba(37,244,238,.8))'
-                    : platformKey === 'instagram'
-                      ? 'drop-shadow(0 0 3px #ff3b9d) drop-shadow(0 0 8px #ff8a00) drop-shadow(0 0 14px rgba(225,48,108,.75))'
-                      : 'drop-shadow(0 0 3px #ffffff) drop-shadow(0 0 8px #ffffff) drop-shadow(0 0 14px rgba(255,255,255,.7))',
-          }}
+          className="relative z-10 size-[30px] shrink-0 object-contain"
+          style={{ filter: iconFilter }}
           aria-hidden="true"
         />
       </span>
       <span className="relative min-w-0 flex-1">
-        <span className="mb-0.5 block text-[10px] font-bold tracking-[0.2em]" style={{ color: platform.color, textShadow: `0 0 10px ${platform.glow}` }}>{platform.label}</span>
+        <span className="mb-0.5 block text-[10px] font-bold tracking-[0.2em]" style={{ color: platform.color, textShadow: `0 0 6px ${platform.glow}` }}>{platform.label}</span>
         <span className="block truncate text-base font-bold tracking-wide text-white">{link.title}</span>
         {link.description && (
           <span className="mt-0.5 block truncate text-xs font-medium text-white/75">{link.description}</span>
